@@ -22,7 +22,7 @@ public class AdminController {
 	@Autowired(required = true)
 	private AdminService service;
 
-	@GetMapping(path = "/getEmp", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	@GetMapping(path = "/getItem", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ItemResponse getEmpData(int id) {
 		ItemResponse response = new ItemResponse();
 		ItemBean infoBean = service.getEmpData(id);
@@ -82,9 +82,9 @@ public class AdminController {
 		return response;
 	} // update Item
 
-	@DeleteMapping(path = "/delete/{empId}", produces = { MediaType.APPLICATION_JSON_VALUE,
+	@DeleteMapping(path = "/delete/{itemId}", produces = { MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE })
-	public ItemResponse deleteEmpData(@PathVariable(name = "empId") int id) {
+	public ItemResponse deleteEmpData(@PathVariable(name = "id") int id) {
 		ItemResponse response = new ItemResponse();
 		if (service.deleteItem(id)) {
 			response.setStatusCode(200);
